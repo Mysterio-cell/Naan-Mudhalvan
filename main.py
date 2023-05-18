@@ -24,8 +24,7 @@ def regpt():
         return render_template('admin.html', error="Invalid Admin Code")
     if func.check_user_exists(email):
         return "User already exists"
-    ok = func.add_newuser(name, email, password, 'admin')
-    if ok:
+    if ok := func.add_newuser(name, email, password, 'admin'):
         session['user'] = email
         return redirect(url_for('regpt', error="User Created"))
     else:
@@ -34,7 +33,7 @@ def regpt():
 
 @app.route("/<role>/login")
 def loginpage(role):
-    return render_template(role+'.html', role=role)
+    return render_template(f'{role}.html', role=role)
 
 
 @app.route('/adminhome')

@@ -60,12 +60,13 @@ class Functions:
 
     def setup_s3(self):
         try:
-            cos = ibm_boto3.client(service_name='s3',
-                                   ibm_api_key_id=COS_API_KEY_ID,
-                                   ibm_service_instance_id=COS_RESOURCE_CRN,
-                                   config=Config(signature_version='oauth'),
-                                   endpoint_url=COS_ENDPOINT)
-            return cos
+            return ibm_boto3.client(
+                service_name='s3',
+                ibm_api_key_id=COS_API_KEY_ID,
+                ibm_service_instance_id=COS_RESOURCE_CRN,
+                config=Config(signature_version='oauth'),
+                endpoint_url=COS_ENDPOINT,
+            )
         except Exception as e:
             print(e)
             return None
