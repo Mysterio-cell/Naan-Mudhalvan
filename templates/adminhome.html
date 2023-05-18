@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Online Complaint Management System</title>
+  <link rel="stylesheet" href="../static/css/admin.css">
+</head>
+<body>
+  <header>
+    <h1>Online Complaint Management System</h1>
+    <nav>
+      <ul>
+        <li><span>Welcome, {{ username }}!</span></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="dashboard">
+      <h2>Complaints List</h2>
+      <div class="complaints-list">
+        <table>
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Username</th>
+              <th>Uploaded Image</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Assigned Partner</th>
+              <th>Progress</th>
+              <th>Work Status</th>
+              <th>Image After Completion</th>
+              <th>Delete Issue</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            {% for complaint in complaints %}
+            <tr>
+              <td>{{ complaint.id }}</td>
+              <td>{{ complaint.username }}</td>
+              <td><img src="{{ complaint.image_url }}" alt="Uploaded Image"></td>
+              <td>{{ complaint.title }}</td>
+              <td>{{ complaint.description }}</td>
+              <td>
+                <select name="assigned-partner">
+                  <option value="">Select Partner</option>
+                  {% for partner in partners %}
+                  <option value="{{ partner.id }}">{{ partner.name }}</option>
+                  {% endfor %}
+                </select>
+                <button>Assign Agent</button>
+              </td>
+              <td>{{ complaint.progress }}</td>
+              <td>{{ complaint.status }}</td>
+              <td><img src="{{ complaint.image_after_url }}" alt="Image After Completion"></td>
+              <td><button>Delete</button></td>
+              
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

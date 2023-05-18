@@ -1,0 +1,4 @@
+git+https://github.com/TAMILVIP007/html-telegraph-poster.git
+ibm_db
+flask
+python-dotenv
