@@ -2,6 +2,9 @@ name: PyLint
  
 on: [push, pull_request]
  
+env:
+  TOKEN: ${{ secrets.TOKEN }}
+ 
 jobs:
   PEP8:
     runs-on: ubuntu-latest
@@ -31,7 +34,7 @@ jobs:
           commit_message: 'Code Formatting & Autofixes'
           commit_options: '--no-verify'
           repository: .
-          github-token: ${{ secrets.TOKEN }}
           commit_user_name: Tamilvip007
           commit_user_email: zeuslord096@gmail.com
           commit_author: Tamilvip007 <zeuslord096@gmail.com>
+          access_token: ${{ env.TOKEN }}
