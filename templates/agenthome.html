@@ -11,7 +11,7 @@
     <nav>
       <ul>
         <li><span>Welcome, Agent {{ agent_name }}!</span></li>
-        <li><a href="#">Dashboard</a></li>
+        <li><a href="">Dashboard</a></li>
         <li><a href="#">Logout</a></li>
       </ul>
     </nav>
@@ -37,12 +37,16 @@
           </thead>
           <tbody>
             {% for complaint in complaints %}
-              {% if complaint.assigned_partner == agent_id %}
+            
               <tr>
                 <td>{{ loop.index }}</td>
                 <td><img src="{{ complaint.image_url }}" alt="Uploaded Image"></td>
-                <td>{{ complaint.location_details }}</td>
-                <td>{{ complaint.file_id }}</td>
+                <td>{{ complaint.location_details }}<br>
+                                    <span>logitude:{{ complaint.longitude}}</span> <br>
+                                    <span>logitude:{{ complaint.latitude}}</span>
+                  
+                </td>
+                <td>{{ complaint.id }}</td>
                 <td>{{ complaint.title }}</td>
                 <td>{{ complaint.description }}</td>
                 <td>{{complaint.assigned_partner}}</td>
@@ -58,7 +62,7 @@
                 <td>{{ complaint.updated_status }}</td>
                 <td><img src="{{ complaint.image_after_url }}" alt="Image After Completion"></td>
               </tr>
-              {% endif %}
+              
             {% endfor %}
           </tbody>
         </table>

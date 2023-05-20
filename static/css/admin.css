@@ -67,8 +67,8 @@ nav a:hover {
 }
 
 .complaints-list td img {
-  max-width: 100%;
-  height: auto;
+  max-width: 200px;
+  height: 200px;
 }
 
 .complaints-list td button {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Raise Complaint - Online Complaint Management System</title>
@@ -12,6 +13,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Online Complaint Management System</h1>
@@ -22,14 +24,14 @@
         <li><a href="#raise-complaint">Raise-complaint</a></li>
         <li><a href="#">View-complaint</a></li>
         <li><a href="#">Logout</a></li>
-    
+
       </ul>
     </nav>
   </header>
   <main>
     <section id="raise-complaint">
       <h2>Raise Complaint</h2>
-      <form action="/submit-complaint" method="post" enctype="multipart/form-data">
+      <form action="/submit-complaint" method="POST" enctype="multipart/form-data">
         <label for="complaint-type">Type of Issue:</label><br>
         <select id="complaint-type" name="complaint_type" required>
           <option value="">Select an option...</option>
@@ -42,7 +44,8 @@
         <label for="complaint-image">Upload Photo:</label><br>
         <input type="file" id="complaint-image" name="complaint_image" required><br><br>
         <label for="complaint-description">Problem Description:</label><br>
-        <textarea id="complaint-description" name="complaint_description" rows="4" cols="50" required></textarea><br><br>
+        <textarea id="complaint-description" name="complaint_description" rows="4" cols="50"
+          required></textarea><br><br>
         <label for="location-details">Location Details:</label><br>
         <textarea id="location-details" name="location_details" rows="4" cols="50" required></textarea><br><br>
         <label for="current-location">Current Location:</label><br>
@@ -62,4 +65,5 @@
   </main>
   <script src="../static/js/user.js"></script>
 </body>
+
 </html>

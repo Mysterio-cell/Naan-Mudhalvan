@@ -11,8 +11,8 @@
     <nav>
       <ul>
         <li><span>Welcome, {{ username }}!</span></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Logout</a></li>
       </ul>
     </nav>
   </header>
@@ -51,7 +51,7 @@
                   <option value="{{ partner.id }}">{{ partner.name }}</option>
                   {% endfor %}
                 </select>
-                <button>Assign Agent</button>
+                <button onclick="assignPartner()">Assign</button>
               </td>
               <td>{{ complaint.progress }}</td>
               <td>{{ complaint.status }}</td>

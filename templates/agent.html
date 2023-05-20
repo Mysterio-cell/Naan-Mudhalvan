@@ -1,89 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Agent Login and Registration - Complaint Management System</title>
-    <link rel="stylesheet" href="../static/css/login.css">
-  </head>
-  <body>
 
-    <header>
-      <center><h1>Complaint Management System</h1></center> 
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="user_login.html">User Login</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+  <title>Agent Login and Registration - Complaint Management System</title>
+  <link rel="stylesheet" href="../static/css/login.css">
+</head>
 
-    <main>
-      <section id="login">
-        <form>
-          <center><h2>Agent Login</h2></center>
-          <span>{{rerror}}</span>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+<body>
 
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
+  <header>
+    <center>
+      <h1>Complaint Management System</h1>
+    </center>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
+  </header>
 
-          <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="#" id="register-link">Register here</a>.</p>
-      </section>
+  <main>
+    <section id="login">
+      <form action="/agent/login" method="POST">
+        <center>
+          <h2>Agent Login</h2><br>
+        </center>
+        {% if error %}
+        <center>
+          <div class="error" id="login-error">{{ error }}</div>
+        </center>
+        {% endif %}
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-      <section id="register" style="display: none;">
-        <form>
-          <center><h2>Agent Registration</h2></center>
-          <span>{{rerror}}</span>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="register-link">Register here</a>.</p>
+    </section>
 
-          
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
+    <section id="register" style="display: none;">
+      <form action="/agent/new_user" method="POST">
+        <center>
+          <h2>Agent Registration</h2>
+        </center>
+        <label for="name">Name:</label>
+        <input type="text" id="rname" name="rname" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="remail" name="remail" required>
 
 
-          <label for="assigned_partner">Role:</label>
-          <select name="assigned_partner">
-            <option value="">Select Partner</option>
-            <option value="Plumber">Plumber</option>
-            <option value="Electrician">Electrician</option>
-            <option value="Mechanic">Mechanic</option>
-          </select required>
+        <label for="password">Password:</label>
+        <input type="password" id="rpassword" name="rpassword" required>
 
-          <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a href="#" id="login-link">Login here</a>.</p>
-      </section>
-    </main>
 
-    <footer>
-      <p>&copy; 2023 Complaint Management System. All rights reserved.</p>
-    </footer>
+        <label for="assigned_partner">Role:</label>
+        <select name="assigned_partner">
+          <option value="">Select Partner</option>
+          <option value="Plumber">Plumber</option>
+          <option value="Electrician">Electrician</option>
+          <option value="Mechanic">Mechanic</option>
+        </select required>
 
-    <script>
-      const loginSection = document.getElementById('login');
-      const registerSection = document.getElementById('register');
-      const loginLink = document.getElementById('login-link');
-      const registerLink = document.getElementById('register-link');
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="#" id="login-link">Login here</a>.</p>
+    </section>
+  </main>
 
-      function showLoginSection() {
-        loginSection.style.display = 'block';
-        registerSection.style.display = 'none';
-      }
+  <footer>
+    <p>&copy; 2023 Complaint Management System. All rights reserved.</p>
+  </footer>
 
-      function showRegisterSection() {
-        loginSection.style.display = 'none';
-        registerSection.style.display = 'block';
-      }
+  <script>
+    const loginSection = document.getElementById('login');
+    const registerSection = document.getElementById('register');
+    const loginLink = document.getElementById('login-link');
+    const registerLink = document.getElementById('register-link');
 
-      loginLink.addEventListener('click', showLoginSection);
-      registerLink.addEventListener('click', showRegisterSection);
-    </script>
+    function showLoginSection() {
+      loginSection.style.display = 'block';
+      registerSection.style.display = 'none';
+    }
 
-  </body>
+    function showRegisterSection() {
+      loginSection.style.display = 'none';
+      registerSection.style.display = 'block';
+    }
+
+    loginLink.addEventListener('click', showLoginSection);
+    registerLink.addEventListener('click', showRegisterSection);
+  </script>
+
+</body>
+
 </html>
